@@ -20,9 +20,9 @@ const GlassmorphicDiv = styled.div<GlassmorphicContainerProps>`
   box-shadow: ${props => props.boxShadow || '0 4px 30px rgba(0, 0, 0, 0.1)'};
   backdrop-filter: ${props => props.backdropFilter || 'blur(0.6rem)'};
   -webkit-backdrop-filter: ${props => props.webkitBackdropFilter || 'blur(4rem)'};
-  padding: ${props => props.padding || '2rem'};
-  margin: ${props => props.margin || '3rem'};
-  height: ${props => props.height || '80%'};
+  padding: ${props => props.padding || '2rem 2rem 0rem 2rem'};
+  margin: ${props => props.margin || '3rem 3rem 0rem 3rem'};
+  height: ${props => props.height || '75vh'};
   width: ${props => props.width || null};
 `;
 

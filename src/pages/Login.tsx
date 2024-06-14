@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Background from '../components/Background';
+import GlassmorphicContainer from '../components/GlassmorphicContainer';
+import InputCustom from '../components/InputCustom';
+import Button from '../components/ButtonCustom';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -15,13 +19,12 @@ const Login: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        value={username} 
-        onChange={(e) => setUsername(e.target.value)} 
-        placeholder="Username"
-      />
-      <button type="submit">Login</button>
+      <Background image="src/assets/background/background.png">
+      <GlassmorphicContainer>
+      <InputCustom placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} showPasswordIcon={true}/>
+        <Button backgroundColor='#FFC046' width='100%' height='2rem' text='Acessar' ativo={true} onClick={handleSubmit}/>
+        </GlassmorphicContainer>
+      </Background>
     </form>
   );
 };

@@ -34,8 +34,7 @@ const Title = styled.h2`
   color: white;
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center; /* Corrigido para 'text-align' em vez de 'text-aling' */
+  text-align: center;
 `;
 
 const LoginForm = styled.form`

@@ -68,7 +68,7 @@ const CenterImage = styled.img`
   left: 35%;
   bottom: 0;
   transform: translateX(-50%);
-  width: 14rem;
+  width: 22%;
   height: auto;
   z-index: 0;
 

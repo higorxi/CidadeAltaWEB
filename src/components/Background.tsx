@@ -1,5 +1,6 @@
-import { FC, ReactNode } from 'react';
+// Background.js
 import styled from 'styled-components';
+import { FC, ReactNode } from 'react';
 
 interface BackgroundProps {
   image: string;
@@ -7,15 +8,15 @@ interface BackgroundProps {
 }
 
 const BackgroundContainer = styled.div<{ image: string }>`
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
   background-image: url(${props => props.image});
   background-size: cover;
   background-position: center;
-  z-index: -1; 
+  display: flex;
+  flex-direction: column;
+  z-index: 0; 
 `;
 
 const Background: FC<BackgroundProps> = ({ image, children }) => {

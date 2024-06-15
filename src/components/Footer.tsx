@@ -4,20 +4,27 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaGoogle, FaYoutube } from 'react-
 const FooterContainer = styled.footer`
   background-color: #10131D; 
   color: #FFFFFF; 
-  height: 3.5rem; 
+  height: auto; 
   display: flex; 
-  justify-content: space-between; 
+  flex-direction: column; 
+  justify-content: center; 
   align-items: center; 
-  padding: 0 2rem; 
+  padding: 1rem;
   border-radius: 10px; 
   margin: 2rem;
-  margin-bottom: 2rem;
-  font-family: 'Poppins', sans-serif; 
+  font-family: 'Poppins', sans-serif;
+
+  @media (min-width: 768px) {
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem; 
+  }
 `;
 
 const LogoWrapper = styled.div`
-  width: 50px; /* Largura da logo */
-  height: 50px; /* Altura da logo */
+  width: 50px; 
+  height: 50px;
 `;
 
 const LogoLink = styled.a`
@@ -31,12 +38,21 @@ const LogoLink = styled.a`
 
 const IconContainer = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: center; 
+  margin-bottom: 1rem; 
+  
+  @media (min-width: 768px) {
+    margin-bottom: 0; 
+  }
 `;
 
 const CenterText = styled.div`
-  flex: 1; 
   text-align: center;
+
+  @media (min-width: 768px) {
+    flex: 1; 
+    text-align: center; 
+  }
 `;
 
 const Footer = () => {

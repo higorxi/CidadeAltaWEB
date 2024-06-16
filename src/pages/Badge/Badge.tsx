@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import GlassmorphicContainer from '../../components/GlassmorphicContainer';
 import Button from '../../components/ButtonCustom';
 import UnderlineText from '../../components/UnderlineText';
+import LogoutComponent from '../../components/Logout';
 
 const EmblemsPageContainer = styled.div`
   display: flex;
@@ -62,8 +63,9 @@ const BadgeForm = styled.form`
 
 const EmblemsPage = () => {
   return (
-    <Background image="src/assets/background/background.png">
+    <Background image="src/assets/background/backgroundLogin.png">
       <Header />
+      <LogoutComponent/>
       <EmblemsPageContainer>
         <GlassWrapper>
           <GlassContainer>

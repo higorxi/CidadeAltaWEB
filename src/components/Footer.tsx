@@ -12,7 +12,7 @@ const FooterContainer = styled.footer`
   padding: 1rem;
   border-radius: 10px;
   font-family: 'Poppins', sans-serif;
-  position: fixed;
+  position: relative;
   bottom: 0;
 
  
@@ -21,8 +21,8 @@ const FooterContainer = styled.footer`
     flex-direction: row; 
     justify-content: space-between;
     align-items: center;
-    height: 3.5rem; 
-    width: 99%;
+    height: 2%; 
+
   }
 `;
 

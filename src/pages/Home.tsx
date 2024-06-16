@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import GlassmorphicContainer from '../components/GlassmorphicContainer';
 import Background from '../components/Background';
+import LogoutComponent from '../components/Logout';
 
 const HomeContainer = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const Home: React.FC = () => {
   return (
     <Background image="src/assets/background/backgroundLogin.png">
       <Header />
+      <LogoutComponent/>
       <HomeContainer>
         <ContentWrapper>
           <GlassmorphicContainer height='75vh' width='100%'> 

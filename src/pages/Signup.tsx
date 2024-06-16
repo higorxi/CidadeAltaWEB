@@ -149,17 +149,17 @@ const Signup: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('oi')
 
     if (password !== confirmPassword) {
       setError('As senhas não coincidem.');
       return;
     }
 
-    if (isValidEmail(email)) {
-      return
-    } else {
+    if (!isValidEmail(email)) {
       setError('O email não é válido.');
-    }
+      return;
+    } 
 
     const dataSend = {
       name: nome,
@@ -168,6 +168,7 @@ const Signup: React.FC = () => {
     };
 
     try {
+      console.log('sucesso')
       const sucesso = await cadastrar(dataSend);
       if (sucesso) {
         navigate('/login');

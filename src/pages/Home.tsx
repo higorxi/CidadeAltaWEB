@@ -20,7 +20,7 @@ const ContentWrapper = styled.div`
 
 const Home: React.FC = () => {
   return (
-    <Background image="src/assets/background/background.png">
+    <Background image="src/assets/background/backgroundLogin.png">
       <Header />
       <HomeContainer>
         <ContentWrapper>

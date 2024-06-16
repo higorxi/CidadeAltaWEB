@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ userProfileUrl }) => {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <NavLink to="/home">HOME</NavLink>
+        <NavLink to="/">HOME</NavLink>
         <ProfileCircle href="/perfil">
           <ProfileImage src={userProfileUrl || 'src/assets/background/profilePicture.jpg'} alt="Foto do Usuário" />
         </ProfileCircle>

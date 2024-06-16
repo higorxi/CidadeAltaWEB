@@ -1,5 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
   background-color: #10131D;
@@ -15,6 +16,7 @@ const HeaderContainer = styled.header`
   font-family: 'Poppins', sans-serif;
   width: 100%;
   max-width: 25rem;
+  margin-bottom: 0;  
 `;
 
 const HeaderContent = styled.div`
@@ -29,31 +31,31 @@ const NavLink = styled(Link)`
   font-size: 0.85rem;
   margin: 0 1rem;
   cursor: pointer;
-  color: #FFFFFF;  
+  color: #FFFFFF;
   opacity: 70%;
   text-decoration: none;
-  transition: color 0.3s; 
+  transition: color 0.3s;
 
   &::before {
     content: '';
     position: absolute;
-    bottom: -0.3rem; 
-    left: -1rem; 
-    right: -1rem; 
-    height: 0.15rem; 
-    background-color: #6273AD; 
-    transition: background-color 0.3s, left 0.3s, right 0.3s; 
+    bottom: -0.3rem;
+    left: -1rem;
+    right: -1rem;
+    height: 0.15rem;
+    background-color: #6273AD;
+    transition: background-color 0.3s, left 0.3s, right 0.3s;
   }
 
   &:hover {
-    color: #FFFFFF; 
+    color: #FFFFFF;
     opacity: 100%;
   }
 
   &:hover::before {
-    background-color: #FFFFFF; 
-    left: -1.2rem; 
-    right: -1.2rem; 
+    background-color: #FFFFFF;
+    left: -1.2rem;
+    right: -1.2rem;
   }
 `;
 
@@ -74,7 +76,11 @@ const ProfileImage = styled.img`
   object-fit: cover;
 `;
 
-const Header = ({ userProfileUrl }) => {
+interface HeaderProps {
+  userProfileUrl?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ userProfileUrl }) => {
   return (
     <HeaderContainer>
       <HeaderContent>

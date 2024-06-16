@@ -13,7 +13,6 @@ const ProfileContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
 `;
 
 const ProfileWrapper = styled.div`
@@ -31,6 +30,7 @@ const ProfileBox = styled(GlassmorphicContainer)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 2rem; 
 `;
 
 const Title = styled.h2`
@@ -59,12 +59,12 @@ const Profile: React.FC = () => {
 
   return (
     <Background image="src/assets/background/background.png">
-      <Header />
+      <Header />  
       <ProfileContainer>
         <ProfileWrapper>
-          <ProfileBox>
+          <ProfileBox height='100%' padding='2rem 2rem 2rem 2rem'>
             <Title>Perfil</Title>
-            <ProfileForm onSubmit={handleSubmit}>
+            <ProfileForm onSubmit={handleSubmit} >
               <ProfilePicture imageUrl="src/assets/background/profilePicture.jpg" onClick={() => console.log('Alterar foto clicado')} />
               <InputCustom placeholder="Nome" colorSecundariaFocus="#BEBCBC" />
               <InputCustom placeholder="Email" colorSecundariaFocus="#BEBCBC" />

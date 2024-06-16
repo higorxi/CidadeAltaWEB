@@ -1,4 +1,3 @@
-// src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
@@ -7,6 +6,7 @@ import PrivateRoute from './routes/PrivateRoute';
 import SignUp from './pages/Signup';
 import GlobalStyle from './GlobalStyles'; 
 import Profile from './pages/Profile/Profile';
+import Badge from './pages/Badge/Badge';
 
 const App: React.FC = () => {
   return (
@@ -18,7 +18,7 @@ const App: React.FC = () => {
           <Route path="/cadastro" element={<SignUp />} />
           <Route path="/home" element={<Home />} />
           <Route path="/perfil" element={<Profile />} />
-          <Route path="/emblemas" element={<SignUp />} />
+          <Route path="/emblemas" element={<Badge />} />
           <Route path="/game" element={<SignUp />} />
           <Route 
             path="/" 

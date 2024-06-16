@@ -4,27 +4,31 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaGoogle, FaYoutube } from 'react-
 const FooterContainer = styled.footer`
   background-color: #10131D; 
   color: #FFFFFF; 
-  height: auto; 
   display: flex; 
+  margin-top: 2rem;
   flex-direction: column; 
   justify-content: center; 
   align-items: center; 
   padding: 1rem;
-  border-radius: 10px; 
-  margin: 2rem;
+  border-radius: 10px;
   font-family: 'Poppins', sans-serif;
+  position: fixed;
+  bottom: 0;
+
+ 
 
   @media (min-width: 768px) {
     flex-direction: row; 
     justify-content: space-between;
     align-items: center;
     height: 3.5rem; 
+    width: 99%;
   }
 `;
 
 const LogoWrapper = styled.div`
-  width: 50px; 
-  height: 50px;
+  width: 3.5rem; 
+  height: 3.5rem;
 `;
 
 const LogoLink = styled.a`

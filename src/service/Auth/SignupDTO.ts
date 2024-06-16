@@ -1,7 +1,7 @@
 interface CadastroDTO {
-    nome: string;
+    name: string;
     email: string;
-    senha: string;
+    password: string;
   }
   export default CadastroDTO;
   

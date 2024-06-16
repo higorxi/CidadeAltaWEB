@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import InputCustom from '../components/InputCustom';
 import Button from '../components/ButtonCustom';
 import Background from '../components/Background';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginContainer = styled.div`
   display: flex;
@@ -20,14 +22,13 @@ const LoginBox = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between
-
+  justify-content: space-between;
 `;
 
-const LoginHeader = styled.form`
+const LoginHeader = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between
+  justify-content: space-between;
 `;
 
 const Title = styled.h2`
@@ -77,38 +78,72 @@ const CheckboxText = styled.span`
   font-size: 1em;
   text-align: center;
   color: white;
-  width: 100%
+  width: 100%;
 `;
 
 const Logo = styled.img`
   width: 4rem;
   height: auto;
   margin-bottom: 20px;
-  align-self: left;  
+  align-self: left;
 `;
 
 const Login: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { logar } = useAuth();
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const dataSend = {
+      email: email.toLowerCase().trim(),
+      password: password
+    };
+  
+    try {
+      const response = await logar(dataSend);
+      if (response) {
+        navigate('/');
+      } else {
+        setError('Credenciais inválidas. Por favor, tente novamente.');
+      }
+    } catch (error) {
+      setError('Erro ao fazer login. Por favor, tente novamente.');
+      console.error('Erro ao fazer login:', error);
+    }
   };
 
   return (
     <Background image="src/assets/background/background.png">
       <LoginContainer>
         <LoginBox>
-            <LoginHeader>
+          <LoginHeader>
             <Logo src="src/assets/logo/logo.png" alt="Logo Cidade Alta" />
             <Logo src="src/assets/logo/logo.png" alt="Logo Cidade Alta" />
-            </LoginHeader>
+          </LoginHeader>
           <Title>Login</Title>
           <LoginForm onSubmit={handleSubmit}>
-            <InputCustom placeholder="Email" colorSecundariaFocus="#BEBCBC" />
-            <InputCustom placeholder="Senha" showPasswordIcon={true} colorSecundariaFocus="#BEBCBC" />
+            <InputCustom 
+              placeholder="Email" 
+              colorSecundariaFocus="#BEBCBC" 
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            />
+            <InputCustom 
+              placeholder="Senha" 
+              showPasswordIcon={true} 
+              colorSecundariaFocus="#BEBCBC" 
+              value={password}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            />
             <CheckboxContainer>
-            <CheckboxInput type="checkbox" />
-            <CheckboxText>Lembrar-me</CheckboxText>
-          </CheckboxContainer>
+              <CheckboxInput type="checkbox" />
+              <CheckboxText>Lembrar-me</CheckboxText>
+            </CheckboxContainer>
             <LoginButton backgroundColor="#FFC046" text="Acessar" height="2.5rem" />
+            {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
           </LoginForm>
           <SignupText>
             Não tem uma conta? <a href="/cadastro">Cadastre-se</a>

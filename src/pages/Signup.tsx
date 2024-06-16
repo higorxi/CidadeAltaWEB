@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import InputCustom from '../components/InputCustom';
 import Button from '../components/ButtonCustom';
 import SideText from '../components/SideText';
 import Background from '../components/Background';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { isValidEmail } from '../utils/isValid';
 
 const Container = styled.div`
   display: flex;
@@ -136,39 +139,113 @@ const CheckboxText = styled.span`
 `;
 
 const Signup: React.FC = () => {
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const { cadastrar } = useAuth();
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError('As senhas não coincidem.');
+      return;
+    }
+
+    if (isValidEmail(email)) {
+      return
+    } else {
+      setError('O email não é válido.');
+    }
+
+    const dataSend = {
+      name: nome,
+      email: email.toLowerCase().trim(),
+      password,
+    };
+
+    try {
+      const sucesso = await cadastrar(dataSend);
+      if (sucesso) {
+        navigate('/login');
+      } else {
+        setError('Erro no cadastro. Por favor, tente novamente.');
+      }
+    } catch (error) {
+      setError('Erro no cadastro. Por favor, tente novamente.');
+    }
+  };
+
   return (
     <>
-    <Background image="src/assets/background/background.png">
-    <Container>
-      <LeftSection>
-        <Logo src="src/assets/logo/logo.png" alt="Logo Cidade Alta" />
-        <Phrase>O MAIOR SERVIDOR RP DA  AMERICA LATINA</Phrase>
-      </LeftSection>
-      <CenterImage src="src/assets/background/personagem.png" alt="Imagem Central" />
-      <RightSection>
-        <Title>Criar Conta</Title>
-        <Form>
-          <InputField placeholder="Nome" colorSecundariaFocus="#BEBCBC" />
-          <InputField placeholder="Email" colorSecundariaFocus="#BEBCBC" />
-          <InputField placeholder="Senha" showPasswordIcon={true} colorSecundariaFocus="#BEBCBC" />
-          <InputField placeholder="Confirmar Senha" showPasswordIcon={true} colorSecundariaFocus="#BEBCBC" />
-          <CheckboxContainer>
-            <CheckboxInput type="checkbox" />
-            <CheckboxText>Li e concordo com os Termos de Serviço e Política de Privacidade</CheckboxText>
-          </CheckboxContainer>
-          <Button backgroundColor="#FFC046" text="Criar Conta" ativo={true} height='2.2rem' width='100%' />
-        </Form>
-        <SideText
-          content1="Já tem uma conta?"
-          content2="Faça Login"
-          href2="/login"
-          style1={{ color: '#BEBCBC', fontFamily: 'Poppins, sans-serif' }} 
-          style2={{ color: '#000000', fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', marginLeft: '0.2rem' }} 
-        />
-      </RightSection>
-    </Container>
-    </Background>
+      <Background image="src/assets/background/background.png">
+        <Container>
+          <LeftSection>
+            <Logo src="src/assets/logo/logo.png" alt="Logo Cidade Alta" />
+            <Phrase>O MAIOR SERVIDOR RP DA AMERICA LATINA</Phrase>
+          </LeftSection>
+          <CenterImage src="src/assets/background/personagem.png" alt="Imagem Central" />
+          <RightSection>
+            <Title>Criar Conta</Title>
+            <Form onSubmit={handleSubmit}>
+              <InputField
+                placeholder="Nome"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                colorSecundariaFocus="#BEBCBC"
+              />
+              <InputField
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                colorSecundariaFocus="#BEBCBC"
+              />
+              <InputField
+                placeholder="Senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                showPasswordIcon={true}
+                colorSecundariaFocus="#BEBCBC"
+              />
+              <InputField
+                placeholder="Confirmar Senha"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                showPasswordIcon={true}
+                colorSecundariaFocus="#BEBCBC"
+              />
+              <CheckboxContainer>
+                <CheckboxInput type="checkbox" />
+                <CheckboxText>
+                  Li e concordo com os Termos de Serviço e Política de Privacidade
+                </CheckboxText>
+              </CheckboxContainer>
+              <Button
+                backgroundColor="#FFC046"
+                text="Criar Conta"
+                ativo={true}
+                height="2.2rem"
+                width="100%"
+              />
+              {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
+            </Form>
+            <SideText
+              content1="Já tem uma conta?"
+              content2="Faça Login"
+              href2="/login"
+              style1={{ color: '#BEBCBC', fontFamily: 'Poppins, sans-serif' }}
+              style2={{ color: '#000000', fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', marginLeft: '0.2rem' }}
+            />
+          </RightSection>
+        </Container>
+      </Background>
     </>
+ 
+
+
   );
 };
 

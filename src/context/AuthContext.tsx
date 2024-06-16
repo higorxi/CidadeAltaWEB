@@ -1,11 +1,11 @@
 import React, { createContext, useContext, ReactNode } from 'react';
-import CadastroDTO from '../service/Auth/SingupDTO';
+import CadastroDTO from '../service/Auth/SignupDTO';
 import LoginDTO from '../service/Auth/LoginDTO';
 import AuthService from '../service/Auth/AuthService';
 interface AuthContextProps {
   user: { email: string } | null; 
-  cadastrar: (data: CadastroDTO) => Promise<void>; 
-  logar: (data: LoginDTO) => Promise<void>; 
+  cadastrar: (data: CadastroDTO) => Promise<boolean>; 
+  logar: (data: LoginDTO) => Promise<boolean>; 
   logout: () => void; 
 }
 
@@ -22,14 +22,29 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return storedUser ? JSON.parse(storedUser) : null;
   });
 
-  const cadastrar = async (data: CadastroDTO) => {
-    await AuthService.cadastrar(data);
+  const cadastrar = async (data: CadastroDTO): Promise<boolean> => {
+    try {
+      const sucesso = await AuthService.cadastrar(data);
+      return sucesso;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
   };
 
-  const logar = async (data: LoginDTO) => {
-    await AuthService.logar(data);
-    const storedUser = localStorage.getItem('user');
-    setUser(storedUser ? JSON.parse(storedUser) : null);
+  const logar = async (data: LoginDTO): Promise<boolean> => {
+    try {
+      const response = await AuthService.logar(data);
+      if (response) {
+        const storedUser = localStorage.getItem('user');
+        setUser(storedUser ? JSON.parse(storedUser) : null);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
   };
 
   const logout = () => {

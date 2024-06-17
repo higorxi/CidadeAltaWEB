@@ -9,7 +9,7 @@ import UnderlineText from '../../components/UnderlineText';
 import LogoutComponent from '../../components/Logout';
 import BadgesService from '../../service/Badges/BadgesService';
 import InputCustom from '../../components/InputCustom';
-import backgroundImage from "src/assets/background/backgroundLogin.png"
+import backgroundImage from "../../assets/background/backgroundLogin.png"
 
 interface Badge {
   id: number;

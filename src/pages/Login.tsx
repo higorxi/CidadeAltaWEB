@@ -5,7 +5,7 @@ import Button from '../components/ButtonCustom';
 import Background from '../components/Background';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import backgroundImage from "src/assets/background/background.png"
+import backgroundImage from "../assets/background/background.png"
 
 const LoginContainer = styled.div`
   display: flex;

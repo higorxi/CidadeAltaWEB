@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
 import Background from '../../components/Background';
@@ -9,6 +9,14 @@ import UnderlineText from '../../components/UnderlineText';
 import LogoutComponent from '../../components/Logout';
 import BadgesService from '../../service/Badges/BadgesService';
 import InputCustom from '../../components/InputCustom';
+
+interface Badge {
+  id: number;
+  name: string;
+  image: string;
+  slug: string;
+  type: string;
+}
 
 const EmblemsPageContainer = styled.div`
   display: flex;
@@ -112,7 +120,7 @@ const BadgeType = styled.span`
   padding: 0.3rem;
   border-radius: 0.2rem;
   color: white;
-  ${(props) => {
+  ${(props: any) => {
     switch (props.type) {
       case 'ouro':
         return `background-color: #FFD700;`;
@@ -136,7 +144,7 @@ const SearchContainer = styled.div`
 const EmblemsPage = () => {
   const [userId, setUserId] = useState('');
   const [badges, setBadges] = useState([]);
-  const [userBadges, setUserBadges] = useState([]);
+  const [userBadges, setUserBadges] = useState<Badge[]>([]);
   const [filteredBadges, setFilteredBadges] = useState([]);
   const [searchName, setSearchName] = useState('');
   const [searchType, setSearchType] = useState('');
@@ -158,7 +166,7 @@ const EmblemsPage = () => {
 
   useEffect(() => {
     const filtered = badges.filter(
-      (badge) =>
+      (badge: any) =>
         badge.name.toLowerCase().includes(searchName.toLowerCase()) &&
         badge.type.toLowerCase().includes(searchType.toLowerCase())
     );
@@ -178,19 +186,19 @@ const EmblemsPage = () => {
     }
   }, []);
 
-  const handleRedeemBadge = async () => {
+  const handleRedeemBadge = async (event: React.MouseEvent) => {
     event.preventDefault();
     try {
       const response = await BadgesService.addRandomBadges(userId);
-      setIconUrl(response.badge.image)
+      setIconUrl(response.badge.image);
       setUserBadges((prevBadges) => [...prevBadges, response.badge]);
   
       const userStr = localStorage.getItem('user');
       if (userStr) {
-        const user = JSON.parse(userStr); 
+        const user = JSON.parse(userStr);
         const updatedUser = {
           ...user,
-          badges: [...user.badges, response.badge], 
+          badges: [...user.badges, response.badge],
         };
         localStorage.setItem('user', JSON.stringify(updatedUser));
       } else {
@@ -226,7 +234,7 @@ const EmblemsPage = () => {
                   />
                 </SearchContainer>
                 <BadgeGrid>
-                  {filteredBadges.map((badge) => (
+                  {filteredBadges.map((badge: any) => (
                     <BadgeItem key={badge.id}>
                       <Icon src={badge.image} alt={badge.name} />
                       <BadgeName>{badge.name}</BadgeName>

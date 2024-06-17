@@ -3,5 +3,5 @@ interface ProfileData {
     email?: string;
     currentPassword?: string;
     password?: string;
-    profileImageUrl: string;
+    profileImageUrl?: string;
   }

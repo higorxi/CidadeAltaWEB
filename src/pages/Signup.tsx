@@ -7,6 +7,7 @@ import Background from '../components/Background';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { isValidEmail } from '../utils/isValid';
+import backgroundImage from "src/assets/background/background.png"
 
 const Container = styled.div`
   display: flex;
@@ -182,7 +183,7 @@ const Signup: React.FC = () => {
 
   return (
     <>
-      <Background image="src/assets/background/background.png">
+      <Background image={backgroundImage}>
         <Container>
           <LeftSection>
             <Logo src="src/assets/logo/logo.png" alt="Logo Cidade Alta" />

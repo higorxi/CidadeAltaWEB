@@ -10,6 +10,7 @@ import ProfilePicture from '../../components/ProfilePicture';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { updateProfile } from '../../service/Profile/ProfileService';
 import LogoutComponent from '../../components/Logout';
+import backgroundImage from 'src/assets/background/backgroundLogin.png';
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -137,7 +138,7 @@ const Profile: React.FC = () => {
   };
 
   return (
-    <Background image="src/assets/background/backgroundLogin.png">
+    <Background image={backgroundImage}>
       <Header />
       <LogoutComponent/>
       <ProfileContainer>

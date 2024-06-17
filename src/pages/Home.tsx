@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import GlassmorphicContainer from '../components/GlassmorphicContainer';
 import Background from '../components/Background';
 import LogoutComponent from '../components/Logout';
+import backgroundImage from "src/assets/background/backgroundLogin.png"
 
 const HomeContainer = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ const ContentWrapper = styled.div`
 
 const Home: React.FC = () => {
   return (
-    <Background image="src/assets/background/backgroundLogin.png">
+    <Background image={backgroundImage}>
       <Header />
       <LogoutComponent/>
       <HomeContainer>

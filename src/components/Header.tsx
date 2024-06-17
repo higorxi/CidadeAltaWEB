@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import logo from '../assets/background/profilePicture.jpg' 
 
 const HeaderContainer = styled.header`
   background-color: #10131D;
@@ -86,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({ userProfileUrl }) => {
       <HeaderContent>
         <NavLink to="/">HOME</NavLink>
         <ProfileCircle href="/perfil">
-          <ProfileImage src={userProfileUrl || 'src/assets/background/profilePicture.jpg'} alt="Foto do Usuário" />
+          <ProfileImage src={userProfileUrl || logo} alt="Foto do Usuário" />
         </ProfileCircle>
         <NavLink to="/emblemas">EMBLEMAS</NavLink>
       </HeaderContent>

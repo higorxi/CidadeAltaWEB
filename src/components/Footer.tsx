@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FaFacebook, FaInstagram, FaLinkedin, FaGoogle, FaYoutube } from 'react-icons/fa';
+import logo from "../assets/logo/logo.png"
 
 const FooterContainer = styled.footer`
   background-color: #10131D; 
@@ -86,7 +87,7 @@ const Footer = () => {
 
       <LogoWrapper>
         <LogoLink href="https://cidadealtarp.com/">
-          <img src="src/assets/logo/logo.png" alt="Logo Cidade Alta" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          <img src={logo} alt="Logo Cidade Alta" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         </LogoLink>
       </LogoWrapper>
     </FooterContainer>

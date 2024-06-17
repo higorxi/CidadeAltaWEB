@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import grafite from '../assets/background/defaultGraffiti.jpg'
 
 const Container = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ const Container = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('src/assets/background/defaultGraffiti.jpg');
+    background-image: url(${grafite});
     background-size: cover;
     background-position: center;
     opacity: 0.3; 

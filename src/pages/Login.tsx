@@ -5,7 +5,8 @@ import Button from '../components/ButtonCustom';
 import Background from '../components/Background';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import backgroundImage from "../assets/background/background.png"
+import backgroundImage from "../assets/background/background.png";
+import logo from "../assets/logo/logo.png"
 
 const LoginContainer = styled.div`
   display: flex;
@@ -121,8 +122,8 @@ const Login: React.FC = () => {
       <LoginContainer>
         <LoginBox>
           <LoginHeader>
-            <Logo src="src/assets/logo/logo.png" alt="Logo Cidade Alta" />
-            <Logo src="src/assets/logo/logo.png" alt="Logo Cidade Alta" />
+            <Logo src={logo} alt="Logo Cidade Alta" />
+            <Logo src={logo} alt="Logo Cidade Alta" />
           </LoginHeader>
           <Title>Login</Title>
           <LoginForm onSubmit={handleSubmit}>

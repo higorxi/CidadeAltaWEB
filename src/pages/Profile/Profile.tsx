@@ -11,6 +11,7 @@ import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { updateProfile } from '../../service/Profile/ProfileService';
 import LogoutComponent from '../../components/Logout';
 import backgroundImage from '../../assets/background/backgroundLogin.png';
+import profilePicture from "../../assets/background/profilePicture.jpg"
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -147,7 +148,7 @@ const Profile: React.FC = () => {
             <Title>Perfil</Title>
             <ProfileForm onSubmit={handleSubmit}>
               <ProfilePicture
-                imageUrl={imageURL ? imageURL : 'src/assets/background/profilePicture.jpg'}
+                imageUrl={imageURL ? imageURL : profilePicture}
                 onClick={() => console.log('Alterar foto clicado')}
               />
               <InputCustom

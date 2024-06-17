@@ -7,7 +7,9 @@ import Background from '../components/Background';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { isValidEmail } from '../utils/isValid';
-import backgroundImage from "../assets/background/background.png"
+import backgroundImage from "../assets/background/background.png";
+import logo from "../assets/logo/logo.png"
+import imageCenter from "../assets/background/personagem.png"
 
 const Container = styled.div`
   display: flex;
@@ -186,10 +188,10 @@ const Signup: React.FC = () => {
       <Background image={backgroundImage}>
         <Container>
           <LeftSection>
-            <Logo src="src/assets/logo/logo.png" alt="Logo Cidade Alta" />
+            <Logo src={logo} alt="Logo Cidade Alta" />
             <Phrase>O MAIOR SERVIDOR RP DA AMERICA LATINA</Phrase>
           </LeftSection>
-          <CenterImage src="src/assets/background/personagem.png" alt="Imagem Central" />
+          <CenterImage src={imageCenter} alt="Imagem Central" />
           <RightSection>
             <Title>Criar Conta</Title>
             <Form onSubmit={handleSubmit}>

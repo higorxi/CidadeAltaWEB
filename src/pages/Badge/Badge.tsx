@@ -9,8 +9,8 @@ import UnderlineText from '../../components/UnderlineText';
 import LogoutComponent from '../../components/Logout';
 import BadgesService from '../../service/Badges/BadgesService';
 import InputCustom from '../../components/InputCustom';
-import backgroundImage from "../../assets/background/backgroundLogin.png"
-
+import backgroundImage from "../../assets/background/backgroundLogin.png";
+import questIcon from "../../assets/icons/questionIcon.png"
 interface Badge {
   id: number;
   name: string;
@@ -250,7 +250,7 @@ const EmblemsPage = () => {
             <GlassmorphicContainer margin='1rem' width='70%'>
               <BadgeForm1>
                 <Title>EMBLEMAS</Title>
-                <Icon2 src={iconUrl ? iconUrl : "src/assets/icons/questionIcon.png"} alt="Icone de um ponto de interrogação" />
+                <Icon2 src={iconUrl ? iconUrl : questIcon} alt="Icone de um ponto de interrogação" />
                 <BadgeButton 
                   backgroundColor="#FFC046" 
                   text="Resgatar" 

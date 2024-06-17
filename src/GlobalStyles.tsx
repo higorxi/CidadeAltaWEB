@@ -1,9 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
+import fontGraphiti from '../src/assets/fonts/Graffiti_City.otf'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Graffiti';
-    src: url('src/assets/fonts/Graffiti_City.otf') format('truetype');
+    src: url(${fontGraphiti}) format('truetype');
     font-weight: normal;
     font-style: normal;
   }

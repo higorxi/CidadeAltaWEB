@@ -114,13 +114,13 @@ const BadgeName = styled.p`
   color: white;
 `;
 
-const BadgeType = styled.span`
+const BadgeType = styled.span<{ type: string }>`
   font-size: 0.8rem;
   margin-top: 0.2rem;
   padding: 0.3rem;
   border-radius: 0.2rem;
   color: white;
-  ${(props: any) => {
+  ${(props) => {
     switch (props.type) {
       case 'ouro':
         return `background-color: #FFD700;`;
